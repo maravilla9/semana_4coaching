@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css">
 <style>
   :root{
     --purple:#4B1FD1;
@@ -15,10 +14,6 @@
     --purple-light:#7C5CF0;
     --green:#2ECC58;
     --green-dark:#1F9E44;
-    --coral:#FF6B4A;
-    --coral-dark:#E14B2A;
-    --whatsapp:#25D366;
-    --whatsapp-dark:#1DAA52;
     --cream:#FAF8FF;
     --text:#1B1730;
     --gray:#6E6B85;
@@ -39,13 +34,15 @@
     color:var(--text);
     overflow-x:hidden;
   }
+  .icon{ display:inline-flex; align-items:center; justify-content:center; line-height:0; }
+  .icon svg{ width:1em; height:1em; }
 
   header{
     width:100%;
     position:relative;
     background:linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 70%);
     color:#fff;
-    padding:28px 16px 60px;
+    padding:26px 16px 30px;
     text-align:center;
     overflow:hidden;
   }
@@ -59,23 +56,30 @@
   header::before{ width:220px;height:220px; background:var(--green); top:-90px; left:-60px; }
   header::after{ width:180px;height:180px; background:var(--purple-light); bottom:-80px; right:-50px; }
   header .inner{position:relative; z-index:1;}
-  header img{ height:36px; margin-bottom:12px; filter:brightness(0) invert(1); opacity:.95; }
+  header img{ height:34px; margin-bottom:10px; filter:brightness(0) invert(1); opacity:.95; }
   header .course{ font-size:clamp(12px,3vw,14px); font-weight:700; letter-spacing:.3px; }
   header .prof{ font-size:clamp(11px,2.6vw,12.5px); opacity:.8; margin-top:3px; display:flex; align-items:center; justify-content:center; gap:5px; }
+  header .prof .icon{ font-size:13px; }
 
-  .wrap{ width:100%; max-width:620px; padding:0 16px; flex:1; margin-top:-38px; position:relative; z-index:2; }
-
-  .title-block{ text-align:center; margin-bottom:20px; }
+  .title-block{
+    width:100%;
+    max-width:620px;
+    text-align:center;
+    padding:26px 16px 4px;
+  }
   .title-icon{
-    width:64px;height:64px; border-radius:50%; background:var(--card);
+    width:64px;height:64px; border-radius:50%; background:#fff;
     display:flex;align-items:center;justify-content:center; margin:0 auto 14px;
     box-shadow:0 10px 24px rgba(75,31,209,.22); font-size:28px; color:var(--purple);
   }
-  h1.title{ font-family:'Poppins',sans-serif; font-size:clamp(21px,5vw,27px); font-weight:800; color:var(--card); margin-bottom:6px; }
+  h1.title{ font-family:'Poppins',sans-serif; font-size:clamp(21px,5vw,27px); font-weight:800; color:var(--text); margin-bottom:8px; }
   .subtitle{
-    color:rgba(255,255,255,.85); font-size:clamp(12px,3vw,13.5px); font-weight:600;
+    color:var(--purple); font-size:clamp(12px,3vw,13.5px); font-weight:700;
     letter-spacing:.3px; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:6px;
   }
+  .subtitle .icon{ color:var(--purple-light); font-size:14px; }
+
+  .wrap{ width:100%; max-width:620px; padding:0 16px; flex:1; }
 
   .card{
     background:var(--card); border-radius:var(--radius-lg); box-shadow:0 20px 45px rgba(43,17,110,.16);
@@ -120,7 +124,7 @@
     padding:16px 18px; font-size:14.5px; color:var(--green-dark); font-weight:600; margin-bottom:24px; text-align:left;
     display:flex; gap:10px; align-items:flex-start;
   }
-  .purpose i{font-size:20px; margin-top:1px; flex-shrink:0;}
+  .purpose .icon{font-size:20px; margin-top:1px; flex-shrink:0;}
   .btn-primary{
     background:linear-gradient(135deg, var(--green), var(--green-dark)); color:#fff; border:none; padding:15px 34px;
     border-radius:28px; font-size:16px; font-weight:700; font-family:'Poppins',sans-serif; cursor:pointer;
@@ -130,9 +134,8 @@
 
   .icon-strip{ display:flex; justify-content:center; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
   .icon-chip{ display:flex; align-items:center; gap:6px; background:#F7F5FF; color:var(--purple); font-size:11.5px; font-weight:700; padding:7px 12px; border-radius:20px; }
-  .icon-chip i{font-size:14px;}
+  .icon-chip .icon{font-size:14px;}
 
-  /* Results */
   .result{text-align:center;display:none;}
   .result h2{ font-family:'Poppins',sans-serif; font-size:clamp(19px,5vw,23px); color:var(--purple); margin-bottom:6px; font-weight:800; }
   .result .sub{ font-size:13.5px; color:var(--gray); margin-bottom:20px; }
@@ -149,6 +152,7 @@
     margin-bottom:22px; text-align:left; font-size:13.5px; color:var(--text); line-height:1.5;
   }
   .insight-box b{color:var(--purple);}
+  .insight-box .icon{ color:var(--purple); margin-right:6px; }
 
   .share-label{
     font-size:13px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.4px;
@@ -195,31 +199,31 @@
   <div class="inner">
     <img src="https://i.postimg.cc/FKz4sz2C/logoutelsinfondo.png" alt="UTEL">
     <div class="course">UTEL Educación Continua — Coaching Organizacional y Comunicación</div>
-    <div class="prof"><i class="ti ti-user-star"></i>Dr. Armando Maravilla</div>
+    <div class="prof"><i class="icon" data-icon="userstar"></i>Dr. Armando Maravilla</div>
   </div>
 </header>
 
-<div class="wrap">
-  <div class="title-block">
-    <div class="title-icon"><i class="ti ti-brain"></i></div>
-    <h1 class="title">Test de Inteligencia Emocional</h1>
-    <div class="subtitle"><i class="ti ti-sparkles"></i>Módulo 5 · Semana 4 · Emociones</div>
-  </div>
+<div class="title-block">
+  <div class="title-icon"><i class="icon" data-icon="brain" style="font-size:30px;"></i></div>
+  <h1 class="title">Test de Inteligencia Emocional</h1>
+  <div class="subtitle"><i class="icon" data-icon="sparkles"></i>Módulo 5 · Semana 4 · Emociones</div>
+</div>
 
+<div class="wrap">
   <div class="card">
 
     <div class="start" id="startScreen">
-      <div class="icon-ring"><i class="ti ti-heart-handshake"></i></div>
+      <div class="icon-ring"><i class="icon" data-icon="heart" style="font-size:38px;"></i></div>
       <h2>¿Qué tan desarrolladas tienes tus 5 dimensiones emocionales?</h2>
       <div class="icon-strip">
-        <span class="icon-chip"><i class="ti ti-eye"></i>Autoconciencia</span>
-        <span class="icon-chip"><i class="ti ti-shield"></i>Autogestión</span>
-        <span class="icon-chip"><i class="ti ti-rocket"></i>Motivación</span>
-        <span class="icon-chip"><i class="ti ti-heart"></i>Empatía</span>
-        <span class="icon-chip"><i class="ti ti-users"></i>Hab. sociales</span>
+        <span class="icon-chip"><i class="icon" data-icon="eye"></i>Autoconciencia</span>
+        <span class="icon-chip"><i class="icon" data-icon="shield"></i>Autogestión</span>
+        <span class="icon-chip"><i class="icon" data-icon="rocket"></i>Motivación</span>
+        <span class="icon-chip"><i class="icon" data-icon="heart"></i>Empatía</span>
+        <span class="icon-chip"><i class="icon" data-icon="users"></i>Hab. sociales</span>
       </div>
-      <div class="purpose"><i class="ti ti-target-arrow"></i><span>Propósito: reconocer tu perfil emocional actual — no hay respuestas correctas, solo autoconocimiento.</span></div>
-      <button class="btn-primary" onclick="startGame()"><i class="ti ti-player-play-filled"></i>Comenzar test</button>
+      <div class="purpose"><i class="icon" data-icon="target"></i><span>Propósito: reconocer tu perfil emocional actual — no hay respuestas correctas, solo autoconocimiento.</span></div>
+      <button class="btn-primary" onclick="startGame()"><i class="icon" data-icon="play"></i>Comenzar test</button>
     </div>
 
     <div id="quizScreen" style="display:none; flex:1; flex-direction:column;">
@@ -231,21 +235,21 @@
     </div>
 
     <div class="result" id="resultScreen">
-      <h2 id="resultTitle">Tu perfil emocional</h2>
+      <h2>Tu perfil emocional</h2>
       <div class="sub">Así se distribuyen tus 5 dimensiones</div>
       <svg id="radarChart" width="280" height="280" viewBox="0 0 280 280"></svg>
       <div class="dim-breakdown" id="dimBreakdown"></div>
       <div class="insight-box" id="insightBox"></div>
 
-      <div class="share-label"><i class="ti ti-share-3"></i>Compartir resultado</div>
+      <div class="share-label"><i class="icon" data-icon="share"></i>Compartir resultado</div>
       <div class="share-row">
-        <button class="share-icon wa" onclick="shareTo('whatsapp')" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></button>
-        <button class="share-icon fb" onclick="shareTo('facebook')" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></button>
-        <button class="share-icon x" onclick="shareTo('twitter')" aria-label="X"><i class="ti ti-brand-x"></i></button>
-        <button class="share-icon copy" onclick="shareTo('copy')" aria-label="Copiar"><i class="ti ti-copy"></i></button>
+        <button class="share-icon wa" onclick="shareTo('whatsapp')" aria-label="WhatsApp"><i class="icon" data-icon="whatsapp"></i></button>
+        <button class="share-icon fb" onclick="shareTo('facebook')" aria-label="Facebook"><i class="icon" data-icon="facebook"></i></button>
+        <button class="share-icon x" onclick="shareTo('twitter')" aria-label="X"><i class="icon" data-icon="x"></i></button>
+        <button class="share-icon copy" onclick="shareTo('copy')" aria-label="Copiar"><i class="icon" data-icon="copy"></i></button>
       </div>
-      <div class="copied" id="copiedMsg"><i class="ti ti-circle-check"></i>¡Resultado copiado!</div>
-      <button class="btn-secondary" onclick="restartGame()"><i class="ti ti-refresh"></i>Repetir test</button>
+      <div class="copied" id="copiedMsg"><i class="icon" data-icon="check"></i>¡Resultado copiado!</div>
+      <button class="btn-secondary" onclick="restartGame()"><i class="icon" data-icon="refresh"></i>Repetir test</button>
     </div>
 
   </div>
@@ -258,12 +262,41 @@
 </footer>
 
 <script>
+const ICONS = {
+  brain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3.5 3.5 0 0 0 2.5 6 3 3 0 0 0 5.5-1.5V6a2 2 0 0 0-3-2z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3.5 3.5 0 0 1-2.5 6 3 3 0 0 1-5.5-1.5V6a2 2 0 0 1 3-2z"/></svg>',
+  eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>',
+  shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>',
+  rocket: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2 5 6 5 10 0 2-1 4-2 5l-1 3-2-2-2 2-1-3c-1-1-2-3-2-5 0-4 2-8 5-10z"/><circle cx="12" cy="10" r="1.4"/><path d="M8.5 15.5 6 18M15.5 15.5 18 18"/></svg>',
+  heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2.2 5.6 5.6 5.1c2-.3 3.7.8 4.5 2.2.8-1.4 2.5-2.5 4.5-2.2 3.4.5 4.8 3.9 3.1 7.4C19 16.65 12 21 12 21z"/></svg>',
+  users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 2.5-6 6-6s6 2.5 6 6"/><circle cx="17" cy="9" r="2.2"/><path d="M15.3 14.2c2.6.5 4.5 2.6 4.7 5.8"/></svg>',
+  target: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>',
+  sparkles: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l1.6 5 5 1.6-5 1.6L12 15l-1.6-4.8-5-1.6 5-1.6L12 2z"/><path d="M19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9L19 14z"/></svg>',
+  play: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M7 4l13 8-13 8V4z"/></svg>',
+  bulb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6.2 6.2 0 0 0-3.2 11.5c.7.45 1.2 1.2 1.2 2.05h4c0-.85.5-1.6 1.2-2.05A6.2 6.2 0 0 0 12 3z"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.6 2.6L16.2 9"/></svg>',
+  refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 0 1 14.5-6l2 2"/><path d="M20.5 12a8.5 8.5 0 0 1-14.5 6l-2-2"/><path d="M20 4v4h-4M4 20v-4h4"/></svg>',
+  share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.2"/><circle cx="18" cy="5.5" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="M7.9 10.8l8.2-4.4M7.9 13.2l8.2 4.4"/></svg>',
+  whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.5 3.5A10.4 10.4 0 0 0 3.2 16.2L2 22l6-1.5A10.4 10.4 0 1 0 20.5 3.5zm-8.4 16a8.3 8.3 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3a8.4 8.4 0 1 1 8.9 3.7z"/></svg>',
+  facebook: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M14 21v-8h2.7l.4-3.3H14V7.6c0-1 .3-1.6 1.7-1.6H17V3.1c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2.5H8v3.3h2.6V21H14z"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>',
+  copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>',
+  userstar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.8 2.7-6.5 6-6.5"/><path d="M17.5 12.5l1 2.1 2.3.3-1.7 1.6.4 2.3-2-1.1-2 1.1.4-2.3-1.7-1.6 2.3-.3z"/></svg>',
+};
+
+function populateIcons(root=document){
+  root.querySelectorAll('[data-icon]').forEach(el => {
+    const name = el.getAttribute('data-icon');
+    if(ICONS[name]) el.innerHTML = ICONS[name];
+  });
+}
+populateIcons();
+
 const dimensions = [
-  { key: "auto", label: "Autoconciencia", icon: "ti-eye", color: "#4B1FD1" },
-  { key: "gest", label: "Autogestión", icon: "ti-shield", color: "#FF6B4A" },
-  { key: "moti", label: "Motivación", icon: "ti-rocket", color: "#2ECC58" },
-  { key: "empa", label: "Empatía", icon: "ti-heart", color: "#F5A623" },
-  { key: "soci", label: "Habilidades sociales", icon: "ti-users", color: "#3B82F6" },
+  { key: "auto", label: "Autoconciencia", icon: "eye", color: "#4B1FD1" },
+  { key: "gest", label: "Autogestión", icon: "shield", color: "#FF6B4A" },
+  { key: "moti", label: "Motivación", icon: "rocket", color: "#2ECC58" },
+  { key: "empa", label: "Empatía", icon: "heart", color: "#F5A623" },
+  { key: "soci", label: "Habilidades sociales", icon: "users", color: "#3B82F6" },
 ];
 
 const questions = [
@@ -307,7 +340,7 @@ function renderQuestion(){
   const q = questions[current];
   const dim = dimensions.find(d => d.key === q.dim);
   document.getElementById('qnum').textContent = `Afirmación ${current+1} de ${questions.length}`;
-  document.getElementById('dimTag').innerHTML = `<i class="ti ${dim.icon}"></i> ${dim.label}`;
+  document.getElementById('dimTag').innerHTML = `<span class="icon" style="margin-right:4px;">${ICONS[dim.icon]}</span> ${dim.label}`;
   document.getElementById('statementText').textContent = q.text;
   document.getElementById('progressFill').style.width = `${(current/questions.length)*100}%`;
 
@@ -340,7 +373,6 @@ function drawRadar(percentages){
   const angleStep = (2*Math.PI)/n;
   let svgContent = '';
 
-  // grid rings
   [0.25, 0.5, 0.75, 1].forEach(frac => {
     let pts = [];
     for(let i=0;i<n;i++){
@@ -351,7 +383,6 @@ function drawRadar(percentages){
     svgContent += `<polygon points="${pts.join(' ')}" fill="none" stroke="#E4DEFB" stroke-width="1"/>`;
   });
 
-  // axis lines + labels
   for(let i=0;i<n;i++){
     const ang = -Math.PI/2 + i*angleStep;
     const x2 = cx + maxR*Math.cos(ang);
@@ -362,7 +393,6 @@ function drawRadar(percentages){
     svgContent += `<text x="${lx}" y="${ly}" font-size="9.5" font-family="Inter, sans-serif" font-weight="700" fill="#1B1730" text-anchor="middle" dominant-baseline="middle">${dimensions[i].label.split(' ')[0]}</text>`;
   }
 
-  // data polygon
   let dataPts = [];
   for(let i=0;i<n;i++){
     const ang = -Math.PI/2 + i*angleStep;
@@ -371,7 +401,6 @@ function drawRadar(percentages){
   }
   svgContent += `<polygon points="${dataPts.join(' ')}" fill="#7C5CF0" fill-opacity="0.35" stroke="#4B1FD1" stroke-width="2.5"/>`;
 
-  // data points
   for(let i=0;i<n;i++){
     const ang = -Math.PI/2 + i*angleStep;
     const r = maxR*(percentages[i]/100);
@@ -409,7 +438,7 @@ function showResult(){
   const weakest = dimensions[minIdx].label;
 
   document.getElementById('insightBox').innerHTML =
-    `<i class="ti ti-bulb" style="color:#4B1FD1; margin-right:6px;"></i>Tu dimensión más fuerte es <b>${strongest}</b> (${percentages[maxIdx]}%). El área con más espacio para crecer es <b>${weakest}</b> (${percentages[minIdx]}%). Recuerda: la inteligencia emocional se entrena, no es un rasgo fijo.`;
+    `<span class="icon">${ICONS.bulb}</span>Tu dimensión más fuerte es <b>${strongest}</b> (${percentages[maxIdx]}%). El área con más espacio para crecer es <b>${weakest}</b> (${percentages[minIdx]}%). Recuerda: la inteligencia emocional se entrena, no es un rasgo fijo.`;
 
   window._lastResult = { percentages, strongest, weakest };
 }
