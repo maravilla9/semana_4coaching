@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test de Inteligencia Emocional | UTEL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --purple:#4B1FD1;
+    --purple-dark:#2A0E82;
+    --purple-light:#7C5CF0;
+    --green:#2ECC58;
+    --green-dark:#1F9E44;
+    --coral:#FF6B4A;
+    --coral-dark:#E14B2A;
+    --whatsapp:#25D366;
+    --whatsapp-dark:#1DAA52;
+    --cream:#FAF8FF;
+    --text:#1B1730;
+    --gray:#6E6B85;
+    --card:#FFFFFF;
+    --amber:#F5A623;
+    --radius-lg:22px;
+    --radius-md:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', system-ui, sans-serif;
+    background:var(--cream);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color:var(--text);
+    overflow-x:hidden;
+  }
+
+  header{
+    width:100%;
+    position:relative;
+    background:linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 70%);
+    color:#fff;
+    padding:28px 16px 60px;
+    text-align:center;
+    overflow:hidden;
+  }
+  header::before, header::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:.18;
+  }
+  header::before{ width:220px;height:220px; background:var(--green); top:-90px; left:-60px; }
+  header::after{ width:180px;height:180px; background:var(--purple-light); bottom:-80px; right:-50px; }
+  header .inner{position:relative; z-index:1;}
+  header img{ height:36px; margin-bottom:12px; filter:brightness(0) invert(1); opacity:.95; }
+  header .course{ font-size:clamp(12px,3vw,14px); font-weight:700; letter-spacing:.3px; }
+  header .prof{ font-size:clamp(11px,2.6vw,12.5px); opacity:.8; margin-top:3px; display:flex; align-items:center; justify-content:center; gap:5px; }
+
+  .wrap{ width:100%; max-width:620px; padding:0 16px; flex:1; margin-top:-38px; position:relative; z-index:2; }
+
+  .title-block{ text-align:center; margin-bottom:20px; }
+  .title-icon{
+    width:64px;height:64px; border-radius:50%; background:var(--card);
+    display:flex;align-items:center;justify-content:center; margin:0 auto 14px;
+    box-shadow:0 10px 24px rgba(75,31,209,.22); font-size:28px; color:var(--purple);
+  }
+  h1.title{ font-family:'Poppins',sans-serif; font-size:clamp(21px,5vw,27px); font-weight:800; color:var(--card); margin-bottom:6px; }
+  .subtitle{
+    color:rgba(255,255,255,.85); font-size:clamp(12px,3vw,13.5px); font-weight:600;
+    letter-spacing:.3px; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+
+  .card{
+    background:var(--card); border-radius:var(--radius-lg); box-shadow:0 20px 45px rgba(43,17,110,.16);
+    padding:clamp(20px,5vw,34px); min-height:340px; display:flex; flex-direction:column; margin-bottom:30px;
+    animation:rise .5s ease;
+  }
+  @keyframes rise{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+
+  .progress-track{ height:6px; background:#EFEDFA; border-radius:6px; overflow:hidden; margin-bottom:18px; }
+  .progress-fill{ height:100%; background:linear-gradient(90deg, var(--purple-light), var(--purple)); width:0%; transition:width .35s ease; }
+
+  .dim-tag{
+    display:inline-flex; align-items:center; gap:6px; background:#F0EBFF; color:var(--purple);
+    font-size:11.5px; font-weight:700; padding:5px 12px; border-radius:20px; margin-bottom:14px; text-transform:uppercase; letter-spacing:.3px;
+  }
+  .qnum{ font-size:12.5px; font-weight:700; color:var(--purple-light); margin-bottom:8px; text-transform:uppercase; letter-spacing:.4px; }
+  .statement{
+    font-family:'Poppins',sans-serif; font-size:clamp(17px,4vw,19.5px); line-height:1.5; color:var(--text);
+    margin-bottom:26px; font-weight:700;
+  }
+
+  .options{ display:flex; flex-direction:column; gap:10px; flex:1; }
+  .opt{
+    display:flex; align-items:center; gap:12px; text-align:left; background:#F7F5FF; border:2px solid transparent;
+    border-radius:var(--radius-md); padding:14px 16px; font-size:14.5px; font-weight:500; color:var(--text); cursor:pointer; transition:.18s ease;
+  }
+  .opt:hover{ border-color:var(--purple-light); background:#F0EBFF; transform:translateY(-1px); }
+  .opt .obullet{
+    flex-shrink:0; width:30px;height:30px; border-radius:50%; background:#fff; border:2px solid var(--purple-light);
+    display:flex;align-items:center;justify-content:center; font-size:13px; color:var(--purple-light); font-weight:700;
+  }
+
+  .start{text-align:center;}
+  .start .icon-ring{
+    width:84px;height:84px; border-radius:50%; background:linear-gradient(135deg,#EFEBFF,#F7F5FF);
+    display:flex;align-items:center;justify-content:center; margin:0 auto 18px; font-size:38px; color:var(--purple);
+    box-shadow:0 10px 22px rgba(75,31,209,.15);
+  }
+  .start h2{ font-family:'Poppins',sans-serif; font-size:clamp(18px,4.5vw,21px); color:var(--text); margin-bottom:16px; font-weight:700; }
+  .purpose{
+    background:linear-gradient(135deg,#F1FBF3,#E9FBEE); border-left:4px solid var(--green); border-radius:var(--radius-md);
+    padding:16px 18px; font-size:14.5px; color:var(--green-dark); font-weight:600; margin-bottom:24px; text-align:left;
+    display:flex; gap:10px; align-items:flex-start;
+  }
+  .purpose i{font-size:20px; margin-top:1px; flex-shrink:0;}
+  .btn-primary{
+    background:linear-gradient(135deg, var(--green), var(--green-dark)); color:#fff; border:none; padding:15px 34px;
+    border-radius:28px; font-size:16px; font-weight:700; font-family:'Poppins',sans-serif; cursor:pointer;
+    box-shadow:0 10px 24px rgba(46,204,88,.32); display:inline-flex; align-items:center; gap:8px; transition:.18s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 28px rgba(46,204,88,.4);}
+
+  .icon-strip{ display:flex; justify-content:center; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
+  .icon-chip{ display:flex; align-items:center; gap:6px; background:#F7F5FF; color:var(--purple); font-size:11.5px; font-weight:700; padding:7px 12px; border-radius:20px; }
+  .icon-chip i{font-size:14px;}
+
+  /* Results */
+  .result{text-align:center;display:none;}
+  .result h2{ font-family:'Poppins',sans-serif; font-size:clamp(19px,5vw,23px); color:var(--purple); margin-bottom:6px; font-weight:800; }
+  .result .sub{ font-size:13.5px; color:var(--gray); margin-bottom:20px; }
+  #radarChart{ margin:0 auto 20px; display:block; }
+  .dim-breakdown{ display:flex; flex-direction:column; gap:10px; margin-bottom:22px; text-align:left; }
+  .dim-row{ display:flex; align-items:center; gap:10px; }
+  .dim-row .dlabel{ width:150px; font-size:12.5px; font-weight:700; color:var(--text); flex-shrink:0; text-align:right; }
+  .dim-row .dbar-track{ flex:1; height:10px; background:#EDEAFB; border-radius:6px; overflow:hidden; }
+  .dim-row .dbar-fill{ height:100%; border-radius:6px; }
+  .dim-row .dval{ width:38px; font-size:12px; font-weight:700; color:var(--gray); flex-shrink:0; }
+
+  .insight-box{
+    background:#F7F5FF; border-left:4px solid var(--purple); border-radius:10px; padding:16px 18px;
+    margin-bottom:22px; text-align:left; font-size:13.5px; color:var(--text); line-height:1.5;
+  }
+  .insight-box b{color:var(--purple);}
+
+  .share-label{
+    font-size:13px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.4px;
+    display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:12px;
+  }
+  .share-row{ display:flex; gap:14px; justify-content:center; margin-bottom:6px; }
+  .share-icon{
+    width:52px; height:52px; border-radius:50%; border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:22px; color:#fff;
+    transition:.18s ease; box-shadow:0 8px 18px rgba(0,0,0,.14);
+  }
+  .share-icon:hover{ transform:translateY(-3px) scale(1.05); }
+  .share-icon.wa{ background:linear-gradient(135deg,#25D366,#1DAA52); }
+  .share-icon.fb{ background:linear-gradient(135deg,#3b82f6,#1e5fce); }
+  .share-icon.x{ background:linear-gradient(135deg,#2c2c2c,#000); }
+  .share-icon.copy{ background:linear-gradient(135deg,var(--purple-light),var(--purple)); }
+  .copied{
+    font-size:12.5px; color:var(--green-dark); font-weight:700; margin-top:12px; display:none;
+    align-items:center; justify-content:center; gap:6px;
+  }
+  .btn-secondary{
+    background:#F7F5FF; color:var(--purple); border:2px solid var(--purple-light); padding:12px 22px;
+    border-radius:26px; font-size:14px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
+    margin-top:18px; transition:.15s ease;
+  }
+  .btn-secondary:hover{background:#EFEBFF;}
+
+  footer{
+    width:100%; background:var(--purple-dark); color:#fff; text-align:center; padding:22px 16px 26px; margin-top:auto;
+  }
+  footer img{ height:24px;margin-bottom:10px;opacity:.9; filter:brightness(0) invert(1); }
+  footer .course{font-size:12.5px;font-weight:700;}
+  footer .prof{font-size:11.5px;opacity:.75;margin-top:3px;}
+
+  @media (min-width:640px){
+    .card{padding:38px 42px;}
+    .opt{padding:16px 18px; font-size:15.5px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <img src="https://i.postimg.cc/FKz4sz2C/logoutelsinfondo.png" alt="UTEL">
+    <div class="course">UTEL Educación Continua — Coaching Organizacional y Comunicación</div>
+    <div class="prof"><i class="ti ti-user-star"></i>Dr. Armando Maravilla</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="title-block">
+    <div class="title-icon"><i class="ti ti-brain"></i></div>
+    <h1 class="title">Test de Inteligencia Emocional</h1>
+    <div class="subtitle"><i class="ti ti-sparkles"></i>Módulo 5 · Semana 4 · Emociones</div>
+  </div>
+
+  <div class="card">
+
+    <div class="start" id="startScreen">
+      <div class="icon-ring"><i class="ti ti-heart-handshake"></i></div>
+      <h2>¿Qué tan desarrolladas tienes tus 5 dimensiones emocionales?</h2>
+      <div class="icon-strip">
+        <span class="icon-chip"><i class="ti ti-eye"></i>Autoconciencia</span>
+        <span class="icon-chip"><i class="ti ti-shield"></i>Autogestión</span>
+        <span class="icon-chip"><i class="ti ti-rocket"></i>Motivación</span>
+        <span class="icon-chip"><i class="ti ti-heart"></i>Empatía</span>
+        <span class="icon-chip"><i class="ti ti-users"></i>Hab. sociales</span>
+      </div>
+      <div class="purpose"><i class="ti ti-target-arrow"></i><span>Propósito: reconocer tu perfil emocional actual — no hay respuestas correctas, solo autoconocimiento.</span></div>
+      <button class="btn-primary" onclick="startGame()"><i class="ti ti-player-play-filled"></i>Comenzar test</button>
+    </div>
+
+    <div id="quizScreen" style="display:none; flex:1; flex-direction:column;">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="qnum" id="qnum"></div>
+      <div class="dim-tag" id="dimTag"></div>
+      <div class="statement" id="statementText"></div>
+      <div class="options" id="optionsWrap"></div>
+    </div>
+
+    <div class="result" id="resultScreen">
+      <h2 id="resultTitle">Tu perfil emocional</h2>
+      <div class="sub">Así se distribuyen tus 5 dimensiones</div>
+      <svg id="radarChart" width="280" height="280" viewBox="0 0 280 280"></svg>
+      <div class="dim-breakdown" id="dimBreakdown"></div>
+      <div class="insight-box" id="insightBox"></div>
+
+      <div class="share-label"><i class="ti ti-share-3"></i>Compartir resultado</div>
+      <div class="share-row">
+        <button class="share-icon wa" onclick="shareTo('whatsapp')" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></button>
+        <button class="share-icon fb" onclick="shareTo('facebook')" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></button>
+        <button class="share-icon x" onclick="shareTo('twitter')" aria-label="X"><i class="ti ti-brand-x"></i></button>
+        <button class="share-icon copy" onclick="shareTo('copy')" aria-label="Copiar"><i class="ti ti-copy"></i></button>
+      </div>
+      <div class="copied" id="copiedMsg"><i class="ti ti-circle-check"></i>¡Resultado copiado!</div>
+      <button class="btn-secondary" onclick="restartGame()"><i class="ti ti-refresh"></i>Repetir test</button>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <img src="https://i.postimg.cc/FKz4sz2C/logoutelsinfondo.png" alt="UTEL">
+  <div class="course">UTEL Educación Continua — Coaching Organizacional y Comunicación</div>
+  <div class="prof">Dr. Armando Maravilla</div>
+</footer>
+
+<script>
+const dimensions = [
+  { key: "auto", label: "Autoconciencia", icon: "ti-eye", color: "#4B1FD1" },
+  { key: "gest", label: "Autogestión", icon: "ti-shield", color: "#FF6B4A" },
+  { key: "moti", label: "Motivación", icon: "ti-rocket", color: "#2ECC58" },
+  { key: "empa", label: "Empatía", icon: "ti-heart", color: "#F5A623" },
+  { key: "soci", label: "Habilidades sociales", icon: "ti-users", color: "#3B82F6" },
+];
+
+const questions = [
+  { dim:"auto", text:"Puedo identificar con precisión qué emoción estoy sintiendo en el momento en que ocurre." },
+  { dim:"auto", text:"Reconozco mis fortalezas y debilidades sin que alguien más tenga que señalármelas." },
+  { dim:"auto", text:"Cuando algo me afecta, entiendo con claridad por qué me afecta." },
+  { dim:"gest", text:"Cuando algo me molesta, logro mantener la calma antes de reaccionar." },
+  { dim:"gest", text:"Me recupero rápido después de sentirme frustrado o enojado." },
+  { dim:"gest", text:"Controlo mis impulsos incluso bajo presión." },
+  { dim:"moti", text:"Me mantengo optimista incluso cuando las cosas no salen como esperaba." },
+  { dim:"moti", text:"Persisto en mis metas aunque el camino para lograrlas sea largo." },
+  { dim:"moti", text:"Encuentro razones para seguir motivado sin que alguien más me lo recuerde." },
+  { dim:"empa", text:"Puedo notar cómo se siente alguien aunque no lo diga con palabras." },
+  { dim:"empa", text:"Me resulta fácil ponerme en el lugar de otra persona, aunque piense distinto a mí." },
+  { dim:"empa", text:"Ajusto mi forma de comunicarme según lo que percibo en el otro." },
+  { dim:"soci", text:"Me resulta fácil iniciar y mantener una conversación con alguien nuevo." },
+  { dim:"soci", text:"Puedo dar mi opinión con claridad, incluso si no es la más popular." },
+  { dim:"soci", text:"Sé recibir una crítica sin ponerme a la defensiva." },
+];
+
+const scaleOptions = [
+  { text: "Nunca", value: 0 },
+  { text: "Rara vez", value: 1 },
+  { text: "A veces", value: 2 },
+  { text: "Casi siempre", value: 3 },
+  { text: "Siempre", value: 4 },
+];
+
+let current = 0;
+let scores = {};
+
+function startGame(){
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('quizScreen').style.display = 'flex';
+  current = 0;
+  scores = { auto:0, gest:0, moti:0, empa:0, soci:0 };
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  const dim = dimensions.find(d => d.key === q.dim);
+  document.getElementById('qnum').textContent = `Afirmación ${current+1} de ${questions.length}`;
+  document.getElementById('dimTag').innerHTML = `<i class="ti ${dim.icon}"></i> ${dim.label}`;
+  document.getElementById('statementText').textContent = q.text;
+  document.getElementById('progressFill').style.width = `${(current/questions.length)*100}%`;
+
+  const wrap = document.getElementById('optionsWrap');
+  wrap.innerHTML = '';
+  scaleOptions.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.innerHTML = `<span class="obullet">${idx+1}</span><span>${opt.text}</span>`;
+    btn.onclick = () => selectOption(opt.value);
+    wrap.appendChild(btn);
+  });
+}
+
+function selectOption(value){
+  const q = questions[current];
+  scores[q.dim] += value;
+  current++;
+  if(current < questions.length){
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function drawRadar(percentages){
+  const svg = document.getElementById('radarChart');
+  const cx = 140, cy = 140, maxR = 100;
+  const n = dimensions.length;
+  const angleStep = (2*Math.PI)/n;
+  let svgContent = '';
+
+  // grid rings
+  [0.25, 0.5, 0.75, 1].forEach(frac => {
+    let pts = [];
+    for(let i=0;i<n;i++){
+      const ang = -Math.PI/2 + i*angleStep;
+      const r = maxR*frac;
+      pts.push((cx + r*Math.cos(ang)) + ',' + (cy + r*Math.sin(ang)));
+    }
+    svgContent += `<polygon points="${pts.join(' ')}" fill="none" stroke="#E4DEFB" stroke-width="1"/>`;
+  });
+
+  // axis lines + labels
+  for(let i=0;i<n;i++){
+    const ang = -Math.PI/2 + i*angleStep;
+    const x2 = cx + maxR*Math.cos(ang);
+    const y2 = cy + maxR*Math.sin(ang);
+    svgContent += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#E4DEFB" stroke-width="1"/>`;
+    const lx = cx + (maxR+22)*Math.cos(ang);
+    const ly = cy + (maxR+22)*Math.sin(ang);
+    svgContent += `<text x="${lx}" y="${ly}" font-size="9.5" font-family="Inter, sans-serif" font-weight="700" fill="#1B1730" text-anchor="middle" dominant-baseline="middle">${dimensions[i].label.split(' ')[0]}</text>`;
+  }
+
+  // data polygon
+  let dataPts = [];
+  for(let i=0;i<n;i++){
+    const ang = -Math.PI/2 + i*angleStep;
+    const r = maxR*(percentages[i]/100);
+    dataPts.push((cx + r*Math.cos(ang)) + ',' + (cy + r*Math.sin(ang)));
+  }
+  svgContent += `<polygon points="${dataPts.join(' ')}" fill="#7C5CF0" fill-opacity="0.35" stroke="#4B1FD1" stroke-width="2.5"/>`;
+
+  // data points
+  for(let i=0;i<n;i++){
+    const ang = -Math.PI/2 + i*angleStep;
+    const r = maxR*(percentages[i]/100);
+    const px = cx + r*Math.cos(ang);
+    const py = cy + r*Math.sin(ang);
+    svgContent += `<circle cx="${px}" cy="${py}" r="4" fill="${dimensions[i].color}"/>`;
+  }
+
+  svg.innerHTML = svgContent;
+}
+
+function showResult(){
+  document.getElementById('quizScreen').style.display = 'none';
+  document.getElementById('resultScreen').style.display = 'block';
+
+  const percentages = dimensions.map(d => Math.round((scores[d.key]/12)*100));
+  drawRadar(percentages);
+
+  const breakdown = document.getElementById('dimBreakdown');
+  breakdown.innerHTML = '';
+  dimensions.forEach((d, i) => {
+    const row = document.createElement('div');
+    row.className = 'dim-row';
+    row.innerHTML = `<span class="dlabel">${d.label}</span><div class="dbar-track"><div class="dbar-fill" style="width:${percentages[i]}%; background:${d.color};"></div></div><span class="dval">${percentages[i]}%</span>`;
+    breakdown.appendChild(row);
+  });
+
+  let maxIdx = 0, minIdx = 0;
+  percentages.forEach((p, i) => {
+    if(p > percentages[maxIdx]) maxIdx = i;
+    if(p < percentages[minIdx]) minIdx = i;
+  });
+
+  const strongest = dimensions[maxIdx].label;
+  const weakest = dimensions[minIdx].label;
+
+  document.getElementById('insightBox').innerHTML =
+    `<i class="ti ti-bulb" style="color:#4B1FD1; margin-right:6px;"></i>Tu dimensión más fuerte es <b>${strongest}</b> (${percentages[maxIdx]}%). El área con más espacio para crecer es <b>${weakest}</b> (${percentages[minIdx]}%). Recuerda: la inteligencia emocional se entrena, no es un rasgo fijo.`;
+
+  window._lastResult = { percentages, strongest, weakest };
+}
+
+function restartGame(){
+  document.getElementById('resultScreen').style.display = 'none';
+  document.getElementById('copiedMsg').style.display = 'none';
+  startGame();
+}
+
+function buildShareText(){
+  const r = window._lastResult;
+  if(!r) return '';
+  let lines = dimensions.map((d,i) => `${d.label}: ${r.percentages[i]}%`);
+  return `🧠 Test de Inteligencia Emocional (UTEL - Coaching Organizacional)\n` +
+    lines.join('\n') + `\n\nMi fortaleza: ${r.strongest} · A trabajar: ${r.weakest}\n¿Y tú? ¡Haz el test!\n` + window.location.href;
+}
+
+function fallbackCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try{ document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta);
+}
+
+function shareTo(platform){
+  const text = buildShareText();
+  const pageUrl = window.location.href;
+  if(platform === 'whatsapp'){
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+  } else if(platform === 'facebook'){
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl) + '&quote=' + encodeURIComponent(text), '_blank', 'width=600,height=500');
+  } else if(platform === 'twitter'){
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank', 'width=600,height=500');
+  } else if(platform === 'copy'){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(showCopied).catch(() => { fallbackCopy(text); showCopied(); });
+    } else {
+      fallbackCopy(text); showCopied();
+    }
+  }
+}
+
+function showCopied(){
+  const el = document.getElementById('copiedMsg');
+  el.style.display = 'flex';
+  setTimeout(() => el.style.display = 'none', 3000);
+}
+</script>
+</body>
+</html>
